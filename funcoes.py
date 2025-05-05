@@ -16,3 +16,9 @@ def remover_dado(dados_rolados: list[int], dados_no_estoque: list[int], indice: 
     valor = novos_estoque.pop(indice)
     novos_rolados.append(valor)
     return [novos_rolados, novos_estoque]
+
+def calcula_pontos_regra_simples(dados: list[int]) -> dict[int, int]:
+    pontos = {}
+    for face in range(1, 7):
+        pontos[face] = dados.count(face) * face
+    return pontos
