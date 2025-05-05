@@ -28,3 +28,10 @@ def calcula_pontos_soma(dados: list[int]) -> int:
     for valor in dados:
         total += valor
     return total
+
+def calcula_pontos_sequencia_baixa(dados: list[int]) -> int:
+    faces = set(dados)
+    for start in range(1, 4):
+        if all(n in faces for n in range(start, start + 3)):
+            return 15
+    return 0
