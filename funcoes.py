@@ -86,11 +86,12 @@ def calcula_pontos_regra_avancada(dados: list[int]) -> dict[str, int]:
         'sequencia_baixa': calcula_pontos_sequencia_baixa(dados),
     }
 
-def faz_jogada(dados: list[int], categoria: str, cartela: dict) -> dict:
-    ps = calcula_pontos_regra_simples(dados)
-    pa = calcula_pontos_regra_avancada(dados)
+def faz_jogada(dados: list[int], categoria: str, cartela_de_pontos: dict) -> dict:
+    pontos_simples = calcula_pontos_regra_simples(dados)
+    pontos_avancada = calcula_pontos_regra_avancada(dados)
     if categoria.isdigit():
-        cartela['regra_simples'][int(categoria)] = pa[int(categoria)]
+        chave = int(categoria)
+        cartela_de_pontos['regra_simples'][chave] = pontos_simples[chave]
     else:
-        cartela['regra_avancada'][categoria] = ps[categoria]
-    return cartela
+        cartela_de_pontos['regra_avancada'][categoria] = pontos_avancada[categoria]
+    return cartela_de_pontos
