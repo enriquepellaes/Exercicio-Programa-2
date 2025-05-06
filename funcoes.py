@@ -66,3 +66,12 @@ def calcula_pontos_quadra(dados: list[int]) -> int:
                 total += x
             return total
     return 0
+
+def calcula_pontos_quina(dados: list[int]) -> int:
+    cont = {}
+    for v in dados:
+        cont[v] = cont.get(v, 0) + 1
+    for c in cont.values():
+        if c >= 5:
+            return 50
+    return 0
