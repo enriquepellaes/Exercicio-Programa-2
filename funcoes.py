@@ -75,3 +75,13 @@ def calcula_pontos_quina(dados: list[int]) -> int:
         if c >= 5:
             return 50
     return 0
+
+def calcula_pontos_regra_avancada(dados: list[int]) -> dict[str, int]:
+    return {
+        'cinco_iguais': calcula_pontos_quina(dados),
+        'full_house': calcula_pontos_full_house(dados),
+        'quadra': calcula_pontos_quadra(dados),
+        'sem_combinacao': calcula_pontos_soma(dados),
+        'sequencia_alta': calcula_pontos_sequencia_alta(dados),
+        'sequencia_baixa': calcula_pontos_sequencia_baixa(dados),
+    }
