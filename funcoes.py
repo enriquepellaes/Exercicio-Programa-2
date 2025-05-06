@@ -42,3 +42,15 @@ def calcula_pontos_sequencia_alta(dados: list[int]) -> int:
         if all(n in faces for n in range(start, start + 5)):
             return 30
     return 0
+
+def calcula_pontos_full_house(dados: list[int]) -> int:
+    cont = {}
+    for v in dados:
+        cont[v] = cont.get(v, 0) + 1
+    vals = sorted(cont.values())
+    if vals == [2, 3]:
+        total = 0
+        for v in dados:
+            total += v
+        return total
+    return 0
