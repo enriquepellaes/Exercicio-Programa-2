@@ -54,3 +54,15 @@ def calcula_pontos_full_house(dados: list[int]) -> int:
             total += v
         return total
     return 0
+
+def calcula_pontos_quadra(dados: list[int]) -> int:
+    cont = {}
+    for v in dados:
+        cont[v] = cont.get(v, 0) + 1
+    for c in cont.values():
+        if c >= 4:
+            total = 0
+            for x in dados:
+                total += x
+            return total
+    return 0
