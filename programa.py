@@ -81,3 +81,13 @@ def main():
                         print("Combinação inválida. Tente novamente.")
             else:
                 print("Opção inválida. Tente novamente.")
+
+    total_simples = sum(cartela['regra_simples'].values())
+    bonus = 35 if total_simples >= 63 else 0
+    total = total_simples + bonus + sum(cartela['regra_avancada'].values())
+
+    imprime_cartela(cartela)
+    print(f"Pontuação total: {total}")
+
+if __name__ == "__main__":
+    main()
