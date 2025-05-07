@@ -18,11 +18,7 @@ def main():
     }
 
     while True:
-        todas_preenchidas = all(
-            v != -1 for v in cartela['regra_simples'].values()
-        ) and all(
-            v != -1 for v in cartela['regra_avancada'].values()
-        )
+        todas_preenchidas = all(v != -1 for v in cartela['regra_simples'].values()) and all(v != -1 for v in cartela['regra_avancada'].values())
         if todas_preenchidas:
             break
 
@@ -49,21 +45,16 @@ def main():
                     print("Você já usou todas as rerrolagens.")
                 else:
                     rerolls += 1
-                    n = len(dados_rolados)
-                    novos = rolar_dados(n)
-                    dados_rolados = novos
+                    dados_rolados = rolar_dados(len(dados_rolados))
             elif escolha == "4":
                 imprime_cartela(cartela)
             elif escolha == "0":
                 print("Digite a combinação desejada:")
                 categoria = input().strip()
-                simples = cartela['regra_simples']
-                avanc = cartela['regra_avancada']
-
                 if categoria.isdigit():
                     chave = int(categoria)
-                    if chave in simples:
-                        if simples[chave] == -1:
+                    if chave in cartela['regra_simples']:
+                        if cartela['regra_simples'][chave] == -1:
                             faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
                             break
                         else:
@@ -71,8 +62,8 @@ def main():
                     else:
                         print("Combinação inválida. Tente novamente.")
                 else:
-                    if categoria in avanc:
-                        if avanc[categoria] == -1:
+                    if categoria in cartela['regra_avancada']:
+                        if cartela['regra_avancada'][categoria] == -1:
                             faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
                             break
                         else:
